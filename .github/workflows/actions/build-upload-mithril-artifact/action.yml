@@ -18,18 +18,15 @@ runs:
       shell: bash
       run: echo "short_sha=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
     - name: Add commit short sha to Cargo.tomls version
-      if: matrix.os != 'macos-14'
       shell: ${{ runner.os == 'Windows' && 'pwsh' || 'bash' }}
       run: |
         pip3 install toml
-        python3 ./.github/workflows/scripts/edit-cargo-toml-version.py -l "${{ steps.label.outputs.short_sha }}"
-
-    - name: Add commit short sha to Cargo.tomls version on macOS-arm64 runners
-      if: matrix.os == 'macos-14'
-      shell: bash
-      run: |
-        pip3 install toml --break-system-packages
         python3 ./.github/workflows/scripts/edit-cargo-toml-version.py -l "${{ steps.label.outputs.short_sha }}"
 
     - name: Cargo build - Binaries - Distribution
