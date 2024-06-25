@@ -15,3 +15,9 @@ upgrade: clean install
 		webpack@latest \
 		webpack-cli@latest \
 		webpack-dev-server@latest \
+
+lint:
+	npm run lint
+
+format:
+	npm run pretty:write
