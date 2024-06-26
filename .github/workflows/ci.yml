@@ -233,6 +233,15 @@ jobs:
           cargo-tools: cargo-sort clippy-sarif sarif-fmt
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check code formatting
+        if: success() || failure()
+        run: |
+          npm ci --prefix mithril-explorer/
+          npm ci --prefix mithril-client-wasm/www
+          npm ci --prefix mithril-client-wasm/www-test
+          npm ci --prefix docs/website
+          make lint
+
       - name: Clippy Check
         if: success() || failure()
         run: |
