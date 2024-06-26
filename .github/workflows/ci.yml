@@ -239,6 +239,7 @@ jobs:
           npm ci --prefix mithril-explorer/
           npm ci --prefix mithril-client-wasm/www
           npm ci --prefix mithril-client-wasm/www-test
+          npm ci --prefix docs/website
           make lint
 
       - name: Clippy Check

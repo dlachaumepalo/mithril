@@ -2,7 +2,7 @@ COMPONENTS = mithril-common mithril-stm mithril-aggregator mithril-client mithri
 			internal/mithril-persistence internal/mithril-doc-derive internal/mithril-doc internal/mithril-build-script \
 			demo/protocol-demo mithril-test-lab/mithril-end-to-end
 
-LINT_COMPONENTS = mithril-explorer mithril-client-wasm
+LINT_COMPONENTS = mithril-explorer mithril-client-wasm docs/website
 
 GOALS := $(or $(MAKECMDGOALS),all)
 
